@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Gilrooy';
+  src: url(../fonts/Gilroy-Medium.ttf)
+}
+
+*{
+  font-family: 'Gilrooy';
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+html, body {
+  margin-top: 0px;
+  padding: 0px;
+}

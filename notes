@@ -1,0 +1,111 @@
+How do you make express app using express-generator 
+- express my-app --view=ejs
+- cd my-app
+- npm i
+- npm start
+
+What is nodemon 
+-Nodemon is a development utility that automatically restarts your Node.js application when it detects -changes in the source files. This makes it easier and more efficient to develop Node.js applications, as -you don't need to manually stop and start the server every time you make a change.
+
+traditional 
+-node app.js
+
+nodemon
+-npx nodemon
+
+in developement mode 
+-npm run dev
+
+what updations can be done in the script
+- {
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  }
+}
+
+what is the difference index.js and app.js
+-app.js is the main application file while index.js is one of the router files that is connected with the main files 
+- see in the app.js files we have 
+-var indexRouter = require('./routes/index');
+-var usersRouter = require('./routes/users');
+in app.js we have all our middlewares setups
+
+What are controllers ?
+-Like we made router modules to clean up our app.js file and do all the routing work in the routing modules we can also make a modules where all the actions are defined
+-for eg. we have 
+-router.get("/" , ()=>{
+    res.send("hello world");
+})
+
+insead we will have 
+-router.get("/" , home);
+this home will be exported from a seprate module that we will need to create and export the home from 
+But I prefer to use the current way only .
+
+
+What is postman ?
+-Postman is a popular API (Application Programming Interface) development and testing tool. It allows developers to create, test, and manage APIs. Postman simplifies the process of developing APIs by providing a user-friendly interface to send HTTP requests, inspect responses, and organize them into collections for better manageability.
+
+Iska kaam tab aaega jab hume apni alag alag routes ko test karna hoga . Its a nice practice to use postman 
+kyuki isse hamara kaam boht assaaan ho jata he 
+
+There are five methods in http requests-
+get,post,put,patch,delete(there are some other as well right now I am focusing on these only)
+just google their name is quite self explanatory of what they do
+
+What is this doing in app.js (app.use(express.json());)?
+-Express Middleware
+-Middleware functions in Express are functions that have access to the request object (req), the response -object (res), and the next middleware function in the application’s request-response cycle. Middleware -functions can perform the following tasks:
+
+-Execute any code.
+-Modify the request and the response objects.
+-End the request-response cycle.
+-Call the next middleware function in the stack.
+
+-express.json()
+-express.json() is a built-in middleware function in Express. When you use app.use(express.json()), it -tells your Express application to parse incoming requests with JSON payloads. This middleware function -parses incoming requests with JSON payloads and makes the parsed JSON data available in req.body.
+-iske bina json files ka len den ni hone wala to agar client request bhejega to uski request hum ni utha
+paenge . hamara sara data idhar udhar json format me hi jaega.
+
+-What are envirement variables
+Environment variables are key-value pairs that are used to configure and manage the settings and behavior of software applications. They are commonly used to store sensitive information such as API keys, database connection strings, and configuration options. By using environment variables, you can separate configuration from your source code, which improves security and makes your application more flexible and easier to manage.
+
+Why user Envirement Variables
+Security:
+Storing sensitive information like passwords, API keys, and database credentials in environment variables keeps them out of your source code. This helps prevent accidental exposure of these sensitive details, especially if your code is stored in a public repository.
+
+In node you can create safe envirement variables using dotenv
+-npm i dotenv
+-Create a .env File
+-write all the envirement variables there and env will  make sure that your data is safe.
+
+To secure the password and other sensitive information of your user you will use 
+bcrypt.js 
+npm i bcryptjs
+iske functions npm ki website pe dale hue he ise search kar lena
+par agar aap passport-local stratergy istemaal kar rahe ho to uski jarurate nahi padegi
+No, you don't need to use bcryptjs directly if you're using passport-local-mongoose. The passport-local-mongoose package internally uses bcrypt to hash and compare passwords. It simplifies the process of setting up user authentication by handling password hashing, salting, and other related tasks for you.
+
+JSON Web Tokens (JWT) are a compact, URL-safe means of representing claims to be transferred between two parties. The claims in a JWT are encoded as a JSON object that is used as the payload of a JSON Web Signature (JWS) structure or as the plaintext of a JSON Web Encryption (JWE) structure, enabling the claims to be digitally signed or integrity protected with a Message Authentication Code (MAC) and/or encrypted.
+
+Structure of a JWT
+A JWT consists of three parts:
+
+Header
+Payload
+Signature
+
+
+How JWTs are Used
+Authentication: When a user logs in, the server creates a JWT and sends it to the client. The client then sends the JWT on subsequent requests, which allows the server to verify the user’s identity.
+Information Exchange: JWTs are a good way of securely transmitting information between parties because they can be signed, which ensures the claims cannot be altered after the token is issued
+
+npm i jsonwebtoken
+
+zod 
+Zod is a TypeScript-first schema declaration and validation library. It allows you to define the shape of your data using a concise and readable syntax, then parse and validate data against these schemas at runtime. Zod is particularly useful in TypeScript projects, but it can also be used in JavaScript projects.
+
+bsically jab tughe username me kuch restrictions lani he ki 3letters se bad ho ya phone number 10 digits ka ho aise situations me zod kaam ata he
+
+npm i zod
